@@ -1,0 +1,59 @@
+.principalDiv {
+    display: grid;
+    height: 100vh;
+    place-items: center;
+}
+
+
+
+.logo {
+    width: 100px;
+    height: auto;
+
+}
+
+.header1 {
+    color: #0049ff;
+    font-weight: 800;
+    font-size: 32px;
+    margin-bottom: 16;
+}
+
+.header2 {
+    font-size: 21px;
+    color: #0099ff;
+}
+
+.section1 {
+    display: grid;
+    place-items: center;
+    place-content: center;
+    height: 100%;
+}
+
+.divButton {
+    margin-top: 16px;
+}
+
+.buttonGithub {
+    align-items: center;
+    background: #000000;
+    border-radius: 9999px;
+    border: 0;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    font-size: 16px;
+    font-weight: 800;
+    padding: 8px 24px;
+    transition: opacity .3s ease
+}
+
+.buttonGithub svg {
+    margin-right: 8px;
+}
+
+
+.buttonGithub:hover {
+    opacity: .7;
+}

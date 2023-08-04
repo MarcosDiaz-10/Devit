@@ -1,0 +1,26 @@
+.textArea {
+    width: 100%;
+    font-size: 21px;
+    border: 0;
+    padding: 15px;
+    resize: none;
+    outline: 0;
+}
+
+.buttonDevitear {
+    align-items: center;
+    background: #000000;
+    border-radius: 9999px;
+    border: 0;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    font-size: 16px;
+    font-weight: 800;
+    padding: 8px 24px;
+    transition: opacity .3s ease
+}
+
+.divButtonDevitear {
+    padding: 15px;
+}
