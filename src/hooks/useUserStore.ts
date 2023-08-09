@@ -3,21 +3,21 @@ import { setIsLoading, setUser } from '@reduxFeatures/userSlice'
 import { useAppSelector, useAppDispatch } from './typesStore'
 
 export default function useUserStore () {
-  const { username, email, avatar, isLoading, isLoged, isFirstCharged } = useAppSelector(state => state.user)
-  // Todo Terminar el hook
+  const { uid, username, email, avatar, isLoading, isLoged, isFirstCharged } = useAppSelector(state => state.user)
   const dispatch = useAppDispatch()
 
-  const onSetUser = ({ username, email, avatar }: UserStateType): void => {
-    dispatch(setUser({ username, email, avatar }))
+  const onSetUser = ({ username, email, avatar, uid }: UserStateType): void => {
+    dispatch(setUser({ username, email, avatar, uid }))
   }
 
   const onLoadingUser = (isLoading: boolean): void => {
     dispatch(setIsLoading(isLoading))
   }
 
-  const user = (email === null) ? null : { username, email, avatar }
+  const user = (uid === null) ? null : { username, email, avatar, uid }
 
   return {
+    uid,
     user,
     username,
     email,

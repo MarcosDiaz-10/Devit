@@ -1,6 +1,7 @@
-import type { UserFirebaseStateType, FirebaseConfig, ProfileAdditionalUserInfoType, UserStateType } from '@/helpers/types'
-import firebase from 'firebase/app'
-import 'firebase/auth'
+import type { UserFirebaseStateType, FirebaseConfig, ProfileAdditionalUserInfoType, UserStateType, DevitType } from '@types'
+import firebase from 'firebase/compat/app'
+import 'firebase/compat/auth'
+import 'firebase/compat/firestore'
 
 const firebaseConfig: FirebaseConfig = {
   apiKey: 'AIzaSyA77XMbBTkz5-eu3t3304ZZGQwF5AraJzk',
@@ -12,7 +13,9 @@ const firebaseConfig: FirebaseConfig = {
   measurementId: 'G-TB996FMEGB'
 }
 
-firebase.initializeApp(firebaseConfig)
+firebase.apps.length === 0 && firebase.initializeApp(firebaseConfig)
+
+const db = firebase.firestore()
 
 type FirebaseUserCredentialType = firebase.auth.UserCredential
 type FirebaseUserType = firebase.User
@@ -29,7 +32,7 @@ const mapUserFromFirebaseAuthToUser = (user: FirebaseUserAuth): mapUserFromFireb
       return null
     }
 
-    const { displayName, photoURL, email } = user
+    const { displayName, photoURL, email, uid } = user
 
     const emailSplit = email?.split('@', 1).join('')
 
@@ -37,7 +40,8 @@ const mapUserFromFirebaseAuthToUser = (user: FirebaseUserAuth): mapUserFromFireb
       avatar: photoURL ?? '',
       username: displayName ?? emailSplit ?? '',
       email: email ?? '',
-      isLoading: false
+      isLoading: false,
+      uid
 
     }
   }
@@ -54,9 +58,10 @@ const mapUserFromFirebaseAuthToUser = (user: FirebaseUserAuth): mapUserFromFireb
     return null
   }
 
-  const { avatar_url: avatarUrl, email } = profile as ProfileAdditionalUserInfoType
+  const { avatar_url: avatarUrl, email, id } = profile as ProfileAdditionalUserInfoType
 
   return {
+    uid: String(id),
     avatar: avatarUrl ?? '',
     username: username === '' ? email ?? '' : username ?? '',
     email: email ?? '',
@@ -82,4 +87,38 @@ export const loginWithGithub = async () => {
   return await firebase
     .auth()
     .signInWithPopup(githubProvider)
+}
+
+export const addDevitFirebase = ({ avatar, content, userId, username }: DevitType) => {
+  return db.collection('devits').add({
+    avatar,
+    content,
+    userId,
+    username,
+    createAt: firebase.firestore.Timestamp.fromDate(new Date()),
+    likesCount: 0,
+    sharedCount: 0
+  })
+}
+
+export const fetchLatestDevits = () => {
+  return db.collection('devits')
+    .get()
+    .then(({ docs }) => {
+      return docs.map((doc) => {
+        const data = doc.data()
+        const id = doc.id
+        const { createAt } = data
+
+        return {
+          ...data,
+          id,
+          createdAt: +createAt.toDate()
+        }
+      })
+    })
+    .catch((error) => {
+      console.log('Error getting documents: ', error)
+      return []
+    })
 }

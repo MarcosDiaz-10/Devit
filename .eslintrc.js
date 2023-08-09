@@ -45,7 +45,7 @@ module.exports = {
     "rules": {
         "@typescript-eslint/prefer-optional-chain": RULES.error,
         "react/react-in-jsx-scope": RULES.off,
-        "@typescript-eslint/explicit-function-return-type": RULES.warn,
+        "@typescript-eslint/explicit-function-return-type": RULES.off,
         "@typescript-eslint/no-misused-promises": [RULES.error, { "checksVoidReturn": false }],
         "@typescript-eslint/restrict-template-expressions": RULES.off,
         "@typescript-eslint/promise-function-async": RULES.off

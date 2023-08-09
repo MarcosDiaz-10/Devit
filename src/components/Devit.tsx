@@ -1,10 +1,12 @@
-import { type ReturnsComponentFunction, type Timeline } from '@types'
+import { type DevitType, type ReturnsComponentFunction } from '@types'
 import ImageLoaderComponent from './ImageLoader'
 import styles from '@styles/homeStyles/devit/devitStyles.module.css'
+import useTiemAgo from '@/hooks/useTimeAgo'
 
-export default function Devit ({ devit }: { devit: Timeline }): ReturnsComponentFunction {
-  const { avatar, username, message } = devit
+export default function Devit ({ devit }: { devit: DevitType }): ReturnsComponentFunction {
+  const { avatar, username, content, createdAt } = devit
 
+  const timeago = useTiemAgo(createdAt ?? 0)
   return (
         <article className={ styles.article }>
         <div className={styles.div}>
@@ -12,8 +14,11 @@ export default function Devit ({ devit }: { devit: Timeline }): ReturnsComponent
         </div>
         <div>
         <section>
-            <strong>{ username }</strong>
-            <p className={ styles.p }>{message}</p>
+          <header>
+            <strong>{ username }.</strong>
+            <span className={styles.span}>{timeago}</span>
+          </header>
+            <p className={ styles.p }>{content}</p>
         </section>
         </div>
       </article>

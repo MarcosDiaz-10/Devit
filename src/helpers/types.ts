@@ -6,6 +6,7 @@ export interface PropsTypes {
   onClick?: () => void
   classNameStyle?: string
   propsForSvg?: React.SVGProps<SVGSVGElement>
+  disabled?: boolean
 }
 
 export interface fonts {
@@ -66,6 +67,7 @@ export interface ProfileAdditionalUserInfoType {
 }
 
 export interface UserStateType {
+  uid: string
   username: string
   avatar: string
   email: string
@@ -91,6 +93,7 @@ export interface ImageComponentPropsType {
 }
 
 export interface UserFirebaseStateType {
+  uid: string
   avatar: string
   email: string
   username: string
@@ -99,13 +102,14 @@ export interface UserFirebaseStateType {
 
 export type ReturnsComponentFunction = JSX.Element
 
-export interface Timeline {
-  id: string
+export interface DevitType {
+  userId: string
   avatar: string
+  content: string
   username: string
-  message: string
-}
-
-export interface timelineTypeReturnFecth {
-  timeline: Timeline[]
+  status?: 'loading' | 'success' | 'error' | 'user_not_know'
+  createdAt?: number
+  id?: string
+  sharedCount?: number
+  likesCount?: number
 }

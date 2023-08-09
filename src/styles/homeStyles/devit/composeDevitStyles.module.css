@@ -21,6 +21,11 @@
     transition: opacity .3s ease
 }
 
+.buttonDevitear[disabled] {
+    pointer-events: none;
+    opacity: .2;
+}
+
 .divButtonDevitear {
     padding: 15px;
 }
