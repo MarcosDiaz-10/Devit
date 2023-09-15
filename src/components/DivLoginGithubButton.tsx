@@ -1,6 +1,6 @@
 'use client'
 import Buttons from './Buttons'
-import GitHub from './Github'
+import GitHub from './icons/Github'
 
 import { loginWithGithub } from '@/firebase/client'
 

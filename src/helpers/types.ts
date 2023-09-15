@@ -7,6 +7,9 @@ export interface PropsTypes {
   classNameStyle?: string
   propsForSvg?: React.SVGProps<SVGSVGElement>
   disabled?: boolean
+  params?: {
+    id: string
+  }
 }
 
 export interface fonts {
@@ -90,6 +93,7 @@ export interface ImageComponentPropsType {
   className?: string
   text?: string
   withText?: boolean
+  onClick?: () => void
 }
 
 export interface UserFirebaseStateType {
@@ -102,14 +106,50 @@ export interface UserFirebaseStateType {
 
 export type ReturnsComponentFunction = JSX.Element
 
+export interface ImageURLUploadStateType {
+  refName: string
+  url: string
+  progress: number
+}
 export interface DevitType {
   userId: string
   avatar: string
   content: string
   username: string
   status?: 'loading' | 'success' | 'error' | 'user_not_know'
-  createdAt?: number
-  id?: string
+  createAt?: number
+  id: string
   sharedCount?: number
   likesCount?: number
+  img: ImageURLUploadStateType[]
+  usersLike?: string[]
+  usersComments?: DevitType[]
+  commentsCount?: number
+}
+
+export interface ParamsType {
+  params: {
+    id: string
+  }
+}
+
+export interface TimeagoPropsType extends DevitType {
+  classNameTime: string
+  classNameLink: string
+  timestamp: number
+
+}
+
+export interface ImageViewerPropsType {
+  imgURL: ImageURLUploadStateType[]
+  handleDeleteFile?: (url: string, imgURL: ImageURLUploadStateType[]) => void
+  uploadingImage?: boolean
+  ifAdd?: boolean
+}
+
+export interface ImageDisplayPropsType {
+  imgURL: string
+  handleDeleteFile?: () => void
+  uploadingImage?: boolean
+  progress: number
 }

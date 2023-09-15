@@ -8,9 +8,11 @@
     align-items: center;
     background: #ffffffaa;
     backdrop-filter: blur(5px);
+    z-index: 1000;
 }
 
 .nav {
+    display: flex;
     bottom: 0;
     position: sticky;
     height: 49px;
@@ -33,4 +35,26 @@
     font-weight: 800;
     font-size: 21px;
     padding-left: 15px;
+}
+
+.section {
+    flex: 1;
+}
+
+.nav div {
+    align-items: center;
+    display: flex;
+    flex: 1 1 auto;
+    height: 100%;
+    justify-content: center;
+}
+
+.nav div:hover {
+    background: radial-gradient(#0099ff22 15%, transparent 16%);
+    background-size: 180px 180px;
+    background-position: center;
+}
+
+.nav div:hover svg {
+    stroke: #0049ff;
 }

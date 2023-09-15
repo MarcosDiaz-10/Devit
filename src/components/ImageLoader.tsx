@@ -12,14 +12,16 @@ const imageLoader = ({ src }: ImagePropsType): string => {
   return `${src}`
 }
 
-export default function ImageLoaderComponent ({ src, alt, width = 100, height = 100, className, text, withText = false }: ImageComponentPropsType): ReturnsComponentFunction | null {
+export default function ImageLoaderComponent ({ src, alt, width = 100, height = 100, className, text, withText = false, onClick }: ImageComponentPropsType): ReturnsComponentFunction | null {
   if (alt === undefined || src === undefined) {
     return null
   }
 
+  const onClickEmpty = () => {}
+
   return (
     <div>
-      <Image loader={ imageLoader } width={width} height={height} src={src} alt={alt} className={className} title={alt}/>
+      <Image loader={ imageLoader } onClick={ onClick ?? onClickEmpty} width={width} height={height} src={src} alt={alt} className={className} title={alt}/>
       { withText && <strong>{text ?? alt }</strong>}
     </div>
 

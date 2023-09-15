@@ -6,17 +6,94 @@
 .p {
     margin: 0;
     line-height: 1.3125;
+    margin-bottom: 10px;
 }
+
+
 
 .article {
     display: flex;
     padding: 10px 15px;
     border-bottom: 2px solid #eaf7ff;
-
+    width: 100%;
+    height: auto;
 }
 
 .span {
     color: #555;
     font-size: 14px;
     margin-left: 5px;
+}
+
+.img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.link {
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+    color: #555
+}
+
+.positionDevit {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.sectionOptions {
+    display: flex;
+
+
+}
+
+.sectionDevit {
+    width: 100%;
+}
+
+.sectionOptions div {
+    padding: 0 10px 0 10px;
+}
+
+.sectionOptions div:hover {
+    background: radial-gradient(#0099ff22 15%, transparent 16%);
+    background-size: 180px 180px;
+    background-position: center;
+    cursor: pointer;
+}
+
+.sectionOptions div:hover svg {
+    stroke: #0049ff;
+}
+
+.sectionOptions section {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-right: 20px;
+
+}
+
+.likedDevit {
+    stroke: #0049ff;
+
+}
+
+.imageComment {
+    padding: 10px;
+}
+
+.textAreaComment {
+    min-height: 86px;
+}
+
+.divTextAreaComment {
+    display: flex;
+    border-bottom: #eaf7ff 2px solid;
 }

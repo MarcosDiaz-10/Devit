@@ -7,7 +7,7 @@ export const initialState = {
   avatar: null,
   isLoading: false,
   isLoged: false,
-  isFirstCharged: true
+  timelineDevits: []
 }
 
 export const userSlice = createSlice({
@@ -21,15 +21,16 @@ export const userSlice = createSlice({
       state.avatar = payload.avatar
       state.isLoading = false
       state.isLoged = true
-      state.isFirstCharged = false
     },
     setIsLoading: (state, { payload }: { payload: boolean }) => {
       state.isLoading = payload
-      state.isFirstCharged = false
+    },
+    setTimelineDevits: (state, { payload }) => {
+      state.timelineDevits = payload
     }
   }
 })
 
-export const { setUser, setIsLoading } = userSlice.actions
+export const { setUser, setIsLoading, setTimelineDevits } = userSlice.actions
 
 export default userSlice.reducer
