@@ -7,7 +7,7 @@ import { useEffect } from 'react'
 
 export default function ValidationRouter ({ children }: PropsTypes) {
   const router = useRouter()
-  const { isLoged, isFirstCharged, onLoadingUser, onSetUser } = useUserStore()
+  const { isLoged, onLoadingUser, onSetUser } = useUserStore()
 
   useEffect(() => {
     onLoadingUser(true)
@@ -16,7 +16,9 @@ export default function ValidationRouter ({ children }: PropsTypes) {
   }, [])
 
   useEffect(() => {
-    if (!isLoged && !isFirstCharged) router.replace('/login')
+    const localStorageIsLoged = localStorage.getItem('isLoged')
+
+    if (localStorageIsLoged === 'false' || localStorageIsLoged === null) router.replace('/login')
   }, [isLoged])
 
   return (

@@ -48,7 +48,8 @@ module.exports = {
         "@typescript-eslint/explicit-function-return-type": RULES.off,
         "@typescript-eslint/no-misused-promises": [RULES.error, { "checksVoidReturn": false }],
         "@typescript-eslint/restrict-template-expressions": RULES.off,
-        "@typescript-eslint/promise-function-async": RULES.off
+        "@typescript-eslint/promise-function-async": RULES.off,
+        "@typescript-eslint/prefer-optional-chain": RULES.off,
     },
     "ignorePatterns": [".eslintrc.js", "tsconfig.json", 'next.config.js']
 }

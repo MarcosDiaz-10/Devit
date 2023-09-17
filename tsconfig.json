@@ -36,6 +36,9 @@
       "@styles/*": [
         "./src/styles/*"
       ],
+      "@firebaseAdmin": [
+        "./src/firebase/admin.ts"
+      ],
     }
   },
   "include": [

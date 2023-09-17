@@ -9,6 +9,7 @@ import ValidationRouter from '@/components/ValidationRouter'
 export const metadata: Metadata = {
   title: 'Devter',
   description: 'Twitter for developers'
+
 }
 
 export default function RootLayout ({ children }: PropsTypes): ReturnsComponentFunction {

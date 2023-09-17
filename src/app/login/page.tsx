@@ -3,7 +3,7 @@ import styles from '@styles/loginStyles/stylesLoginPage.module.css'
 import DivLoginGithubButtons from '@/components/DivLoginGithubButton'
 
 import { type ReturnsComponentFunction } from '@types'
-import ImageComponentLogo from '@/components/ImageComponentLogo'
+import ImageComponentLogo from '@/components/icons/ImageComponentLogo'
 
 export default function LoginPage (): ReturnsComponentFunction {
   return (
