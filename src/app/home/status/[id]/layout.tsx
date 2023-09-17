@@ -4,8 +4,10 @@ import style from '@styles/homeStyles/devit/devitStyles.module.css'
 import TextAreaForm from '@/components/TextAreaForm'
 import ImageLoaderComponent from '@/components/ImageLoader'
 
+const fetchUrl = process.env.URL_FETCH ?? 'http://localhost:3000/api/devits'
+
 const fetchDevit = (id: string): Promise<DevitType | null > => {
-  return fetch(`http://localhost:3000/api/devits/${id}`, { cache: 'no-store' })
+  return fetch(fetchUrl + `/${id}`, { cache: 'no-store' })
     .then((res) => {
       if (!res.ok) return null
       return res.json()
